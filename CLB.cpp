@@ -94,6 +94,7 @@ string scs(vector<string>& strings){
         unordered_set<char> visited_chars;
         for (int i = 0; i < k; i++)
         {
+            
             if (v[i] >= strings[i].size()) continue;
             char c = strings[i][v[i]];
 
