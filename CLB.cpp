@@ -93,8 +93,7 @@ string scs(vector<string>& strings){
         // Adding every char to the current vertex
         unordered_set<char> visited_chars;
         for (int i = 0; i < k; i++)
-        {
-            
+        {   
             if (v[i] >= strings[i].size()) continue;
             char c = strings[i][v[i]];
 
