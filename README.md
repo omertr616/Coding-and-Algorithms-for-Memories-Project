@@ -10,8 +10,7 @@ to find their SCS with good complexity (better than the multiplication of their 
 ### Algorithms Presented in This Project:
  1. Dynamic Programming  
  2. Dynamic Programming with 0-1 BFS for 2 Sequences
- 3. Dynamic Programming with 0-1 BFS for Three or More Sequences
- 4. Dynamic programming with 0-1 BFS for Multiple Sequences
+ 3. Dynamic programming with 0-1 BFS for Multiple Sequences
 
 
 ## Getting Started
@@ -19,10 +18,6 @@ to find their SCS with good complexity (better than the multiplication of their 
  These instructions will guide you through setting up and running test cases for the algorithms presented in our project. Follow the steps below to run the tests locally on your machine.
 
 ### Prerequisites
-
-```
-What things you need to install the software and how to install them
-```
 
 Before running the project, make sure you have the following installed:
 
@@ -47,6 +42,32 @@ A step by step series of examples that tell you how to get a development env run
    ```bash
    cd Coding-and-Algorithms-for-Memories-Project
    ```
+
+## Installation of Dependencies
+
+To run the Python script for plotting the results, you'll need to install the `matplotlib` library. Follow the steps below:
+
+### 1. Install `matplotlib` using pip
+
+#### For Windows/macOS/Linux:
+
+1. Open your terminal or command prompt.
+
+   - **Windows**: Press `Win + R`, type `cmd`, and hit Enter.
+   - **macOS/Linux**: Open the terminal.
+
+2. Run the following command to install `matplotlib`:
+
+   ```bash
+   pip install matplotlib
+   ```
+
+   If you’re using Python 3 specifically and pip is set up for Python 2, you might need to use:
+    ```bash
+   pip3 install matplotlib
+   ```
+
+
 
 ## Running the tests
 
@@ -89,3 +110,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc
+

@@ -129,13 +129,7 @@ string scs(vector<string> _strings){
         {
             swap(_dist0, _dist1);
         }
-        // while(!_dist0->empty() && visited.find(_dist0->front()) != visited.end()){
-        //     _dist0->pop();
-        // }
-        // if (_dist0->empty())
-        // {
-        //     swap(_dist0, _dist1);
-        // }
+        
         v = _dist0->front();
         _dist0->pop();
     }
@@ -173,6 +167,10 @@ string scs(vector<string> _strings){
 #include <vector>
 #include <iostream>
 
+#include <cstdlib>
+#include <ctime>
+#include <chrono>
+#include <fstream>
 
 
 // Function to generate a random string of length 'n'
@@ -356,49 +354,67 @@ int test2() {
    return 0;
 }
 
+int test_empirical(vector<int> n, vector<int> t, vector<int> k) {
+    
+    std::ofstream outfile("results.csv");
+        outfile << "n,t,k,Time(s)\n"; 
+
+    for(int i = 0; i < n.size(); i++){  // n values
+        for(int j = 0; j < t.size(); j++){  // t values
+            for(int l = 0; l < k.size(); l++){  // k values
+                cout << "n = " << n[i] << ", t = " << t[j] << ", k = " << k[l] << endl;  
+                // Take avrage:
+                int times = 10;
+                chrono::duration<long long, std::nano> duration = chrono::duration<long long, std::nano>(0);
+                for (int idx = 0; idx < times; idx++)
+                {
+                    string original = generateRandomString(n[i]);
+                    vector<string> strings(k[l]);
+                    for(int m = 0; m < k[l]; m++){
+                        strings[m] = deleteRandomChars(original, m);
+                    }
+
+                    // Timing the function
+                    auto start = std::chrono::high_resolution_clock::now();
+                    string res = scs(strings);
+                    auto end = std::chrono::high_resolution_clock::now();
+
+                    duration += end - start;  // nanoseconds
+                }
+                duration = duration/ times;
+
+
+                // Store n, t, k, and the time taken
+                outfile << n[i] << "," << t[j] << "," << k[l] << "," << duration.count() << "\n";
+
+            }
+        }       
+    }
+
+    outfile.close();
+    std::cout << "Results saved in 'empirical_results' folder." << std::endl;
+  
+    return 0;
+    }
 
 
 int main(){
-    // strings = {"01234789", "2345678", "0345689"};
-    // string res = scs(strings);
-    // cout << res << endl;
-    
-    // USROAEWKXJHXQDXBWK
-    // strings = {"USOXJXQDK",
-    //             "SOAEXJHXW",
-    //             "SOWKJXQDK",
-    //             "AWJHDXBWK",
-    //             "SRAKJXXBW",
-    //             "SAEXHQXBW"};
-
-    // string res = scs(strings);
-    // cout << res << endl;
-
-
-    /*
-    Original string: QLISLM
-    SCS: QSLILMS
-    QLL
-    SLM
-    QIS
-    QLI
-    */
-    // strings = {"QLL", "SLM", "QIS", "QLI"};
-    // string res = scs(strings);
-    // cout << res << endl;
-
-    /*
-    Original string: ELILQ
-    SCS: EILIQL
-    Strings:
-    ELI
-    EIL
-    ILQ
-    ELL
-    ELQ
-    */
 
     // test();
-    test2();
+    //test2(); 
+    
+    vector<int> n = {500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000};
+    vector<int> k = {5};
+    vector<int> t = {5};
+    // test_empirical(n, t, k) ;
+    // system("python3 plot_results.py --test_condition n");  // run python
+    
+    n = {100000};
+    k = {5};
+    // t = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    t = {100,200,300,400,500};
+    test_empirical(n, t, k) ;
+    system("python3 plot_results.py --test_condition t");  // run python 
+
     return 0;
 }
