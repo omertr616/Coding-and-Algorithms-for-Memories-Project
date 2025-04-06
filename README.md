@@ -7,12 +7,6 @@ they all result from a length-n sequence with deletions. For example, assume the
 number of sequences all received by t deletions from some length-n sequence x. The goal is
 to find their SCS with good complexity (better than the multiplication of their lengths).
 
-### Algorithms Presented in This Project:
- 1. Dynamic Programming  
- 2. Dynamic Programming with 0-1 BFS for 2 Sequences
- 3. Dynamic programming with 0-1 BFS for Multiple Sequences
-
-
 ## Getting Started
 
  These instructions will guide you through setting up and running test cases for the algorithms presented in our project. Follow the steps below to run the tests locally on your machine.
@@ -21,18 +15,19 @@ to find their SCS with good complexity (better than the multiplication of their 
 
 Before running the project, make sure you have the following installed:
 
-- **C++ Compiler (g++, clang++, or MSVC)**
-  - For Windows: [MinGW](https://sourceforge.net/projects/mingw/) or [MSVC](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
-  - For MacOS: `brew install gcc`
-  - For Linux: `sudo apt-get install g++`
-  
+- **C++ Compiler** (g++, clang++, or MSVC)
+
 - **Git** (to clone the repository)
-  - [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+- **Python 3.x installed** (recommended: Python 3.8+)
+
+- **pip or pip3** (for installing Python packages)
+
+- **`matplotlib` library** (install using pip, for plotting performance graphs)
 
 ### Installing
-```
-A step by step series of examples that tell you how to get a development env running
-```
+To set up the project on your local machine, follow these steps:
+
 1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/your-username/Coding-and-Algorithms-for-Memories-Project.git
@@ -43,63 +38,58 @@ A step by step series of examples that tell you how to get a development env run
    cd Coding-and-Algorithms-for-Memories-Project
    ```
 
-## Installation of Dependencies
-
-To run the Python script for plotting the results, you'll need to install the `matplotlib` library. Follow the steps below:
-
-### 1. Install `matplotlib` using pip
-
-#### For Windows/macOS/Linux:
-
-1. Open your terminal or command prompt.
-
-   - **Windows**: Press `Win + R`, type `cmd`, and hit Enter.
-   - **macOS/Linux**: Open the terminal.
-
-2. Run the following command to install `matplotlib`:
-
-   ```bash
-   pip install matplotlib
-   ```
-
-   If you’re using Python 3 specifically and pip is set up for Python 2, you might need to use:
-    ```bash
-   pip3 install matplotlib
-   ```
-
-
-
 ## Running the tests
 
-In this section, we will explain how to run tests for each of the 1-4 algorithms and provide their respective meanings.
+In this section, we will explain how to run tests for each of the algorithms presented in the project and provide their respective meanings.
 
-Explain how to run the automated tests for this system
+#### 1. <u>Dynamic Programming</u>  
 
-#### 1. Dynamic Programming  
+Run the tests with the commands:
 
-```
-Give an example
-```
+   ```
+    g++ -o output_file regular_dynamic_programming.cpp
+    output_file.exe 
+   ```
 
-```
- # Compile the code:
-    g++ -o output_file source_file.cpp
-    
- # If you're using **CMD**, run:
-    output_file.exe
+#### 2.1 <u>Dynamic Programming with 0-1 BFS for 2 Sequences</u>
 
- # If you're using **PowerShell**, run:
-    ./output_file.exe
-```
-#### 2. Dynamic Programming with 0-1 BFS for 2 Sequences
-#### 3. Dynamic Programming with 0-1 BFS for Three or More Sequences
-#### 4. Dynamic programming with 0-1 BFS for Multiple Sequences
+Run the tests with the commands:
+   ```
+    g++ -o output_file SCS_two_sequences.cpp
+    output_file.exe 
+   ```
+
+#### 2.2 <u>Dynamic Programming with 0-1 BFS for Three or More Sequences</u>
+During the project, we observed that this algorithm does not handle all cases correctly. For example, given the input sequences {"AB", "BB", "BA"}, it produces the output "ABBA", which has a length of 4. However, the actual shortest common supersequence (SCS) has a length of 3, such as "BAB".
+
+This test demonstrates how the algorithm behaves for the specific example we discussed, producing different outputs for the same input sequences:
+
+Input: {"AB", "BB", "BA"}  , Output: ABBA
+
+Input: {"BB", "AB", "BA"}  , Output: BAB
+
+Input: {"AB", "BA", "BB"}  , Output: ABAB 
+
+Run the example with the commands:
+
+   ```
+    g++ -o output_file bad_generalization_for_multiple_sequences.cpp
+    output_file.exe 
+   ```
+   
+#### 3. <u>Dynamic programming with 0-1 BFS for Multiple Sequences</u>
+
+Run the tests with the commands:
+
+   ```
+    g++ -o output_file SCS_multiple_sequences.cpp
+    output_file.exe 
+   ```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* Omer Trinin 
+* Keren Mirzahi
 
 ## License
 
@@ -107,7 +97,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **E.W. Myers**, *An O(ND) difference algorithm and its variations*, Algorithmica, 1:251–266, 1986.
+* **R.W. Irving, C.B. Fraser**, *Two algorithms for the longest common subsequence of three (or more) strings*, In *Proceedings of the Annual Symposium on Combinatorial Pattern Matching*, Tucson, AZ, USA, 29 April–1 May 1992; pp. 214–229.
+
+* **V.G. Timkovskii**, *Complexity of Common Subsequence and Supersequence Problems and Related Problems*
 
