@@ -14,7 +14,7 @@ k_values = []
 
 with open('results.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
-    next(reader)  # Skip the header
+    next(reader)  
     for row in reader:
         n_values.append(int(row[0]))
         t_values.append(int(row[1]))

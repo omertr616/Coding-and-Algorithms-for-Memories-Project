@@ -44,8 +44,11 @@ In this section, we will explain how to run tests for each of the algorithms pre
 
 #### 1. <u>Dynamic Programming</u>  
 
-Run the tests with the commands:
+We provide an example to compute the SCS of two strings:
 
+`str1 = "abac"`  `str2 = "cab"`
+
+To run this example using the DP algorithm, execute the following commands:
    ```
     g++ -o output_file regular_dynamic_programming.cpp
     output_file.exe 
@@ -53,7 +56,7 @@ Run the tests with the commands:
 
 #### 2.1 <u>Dynamic Programming with 0-1 BFS for 2 Sequences</u>
 
-Run the tests with the commands:
+To compute the last example using the optimized DP algorithm with 0-1 BFS, run the following commands:
    ```
     g++ -o output_file SCS_two_sequences.cpp
     output_file.exe 
@@ -62,7 +65,7 @@ Run the tests with the commands:
 #### 2.2 <u>Dynamic Programming with 0-1 BFS for Three or More Sequences</u>
 During the project, we observed that this algorithm does not handle all cases correctly. For example, given the input sequences {"AB", "BB", "BA"}, it produces the output "ABBA", which has a length of 4. However, the actual shortest common supersequence (SCS) has a length of 3, such as "BAB".
 
-This test demonstrates how the algorithm behaves for the specific example we discussed, producing different outputs for the same input sequences:
+This test demonstrates how the algorithm produces different results for the same input sequences (using the specific example we discussed):
 
 Input: {"AB", "BB", "BA"}  , Output: ABBA
 
@@ -70,7 +73,7 @@ Input: {"BB", "AB", "BA"}  , Output: BAB
 
 Input: {"AB", "BA", "BB"}  , Output: ABAB 
 
-Run the example with the commands:
+Run the example using the following commands:
 
    ```
     g++ -o output_file bad_generalization_for_multiple_sequences.cpp
