@@ -4,6 +4,7 @@
 #include <random>
 #include <algorithm>
 #include <vector>
+#include "SCS_multiple_sequences.cpp"
 
 using namespace std;
 
@@ -48,13 +49,19 @@ string deleteRandomChars(const string &s, int t) {
     return result;
 }
 
-string scs(vector<string> s);
-
-int test() {
+// Function to test the SCS function with random strings
+// and check if the SCS length is less than or equal to n.
+// This is only senity check since the SCS maight need be less than n
+// but not equal to n.
+int test(int _n, int _t, int _k) {
+    if (_t > _n) {
+        cout << "t cannot be greater than n" << endl;
+        return 0;
+    }
     
     int tests = 100;
     for(int i = 0; i < tests; i++){
-        int n = rand() % 20 + 2;
+        int n = rand() % _n + 2;
         int t = rand() % (n/2) + 1;
         int k = rand() % 10 + 1;
         cout << "Test " << i+1 << ": n = " << n << ", t = " << t << ", k = " << k << endl;  
@@ -85,4 +92,13 @@ int test() {
     return 0;
 }
 
+int main() {
+    // Test the SCS function with random strings
+    int n = 1000; // Maximum length of the original string
+    int t = 10;   // Number of characters to delete
+    int k = 5;    // Number of strings to generate
 
+    test(n, t, k);
+
+    return 0;
+}

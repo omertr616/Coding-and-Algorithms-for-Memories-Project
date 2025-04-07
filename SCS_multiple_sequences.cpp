@@ -43,6 +43,8 @@ class Vertex {
         return idxs < other.idxs;
     }
 
+    // Check if all indices are at the end of their respective strings
+    // This function is used to check if we have reached the end of all strings
     bool at_end() const {
         for (int i = 0; i < idxs.size(); i++) {
             if (idxs[i] < strings[i].size()) {
@@ -56,6 +58,8 @@ class Vertex {
         return idxs[i];
     } 
 
+    /// Function to increase the index of the character 'c' in the strings
+    /// This function is called when we progress to the next vertex in the graph
     void icrease_char_idx(char c) {
         int prev_MS = calc_MS();
         for (int i = 0; i < idxs.size(); i++) {
@@ -78,11 +82,20 @@ struct Hash {
     }
 };
 
+/// Function to find the shortest common supersequence (SCS) of multiple strings
 string scs(vector<string> _strings){
     strings = _strings;
+
+    // visited is used to store the vertices which are already visited in the BFS.
+    // The key is the vertex and the value is the vertex from where we came to this point.
     unordered_map<Vertex, Vertex, Hash> visited;
+
+    // dist0 and dist1 are used to store the vertices in the graph
+    // dist0 is used for vertices which are in the same layer in the BFS.
+    // dist1 is used for vertices which are in the next layer in the BFS.
     queue<Vertex> dist0;
     queue<Vertex> dist1;
+
     int k = strings.size();
 
     Vertex v(vector<int>(k, 0), 0);
@@ -166,7 +179,6 @@ string scs(vector<string> _strings){
 #include <algorithm>
 #include <vector>
 #include <iostream>
-
 #include <cstdlib>
 #include <ctime>
 #include <chrono>
