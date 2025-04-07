@@ -129,7 +129,7 @@ string scs(vector<string> _strings){
         {
             swap(_dist0, _dist1);
         }
-        
+
         v = _dist0->front();
         _dist0->pop();
     }
@@ -371,7 +371,7 @@ int test_empirical(vector<int> n, vector<int> t, vector<int> k) {
                     string original = generateRandomString(n[i]);
                     vector<string> strings(k[l]);
                     for(int m = 0; m < k[l]; m++){
-                        strings[m] = deleteRandomChars(original, m);
+                        strings[m] = deleteRandomChars(original, t[j]);
                     }
 
                     // Timing the function
