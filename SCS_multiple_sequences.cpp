@@ -147,7 +147,7 @@ string scs(vector<string> _strings){
         _dist0->pop();
     }
 
-
+    // Recontructing the SCS from the visited map
     string res = "";
     while (visited[v][0] != -1)
     {
