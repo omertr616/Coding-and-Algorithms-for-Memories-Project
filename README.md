@@ -7,6 +7,8 @@ they all result from a length-n sequence with deletions. For example, assume the
 number of sequences all received by t deletions from some length-n sequence x. The goal is
 to find their SCS with good complexity (better than the multiplication of their lengths).
 
+https://www.overleaf.com/read/rtcccdmqgkpm#af0160
+
 ## Getting Started
 
  These instructions will guide you through setting up and running test cases for the algorithms presented in our project. Follow the steps below to run the tests locally on your machine.
