@@ -86,13 +86,13 @@ struct Hash {
 string scs(vector<string> _strings){
     strings = _strings;
 
-    // visited is used to store the vertices which are already visited in the BFS.
+    // visited is used to store the vertices which are already visited in the 0-1 BFS.
     // The key is the vertex and the value is the vertex from where we came to this point.
     unordered_map<Vertex, Vertex, Hash> visited;
 
     // dist0 and dist1 are used to store the vertices in the graph
-    // dist0 is used for vertices which are in the same layer in the BFS.
-    // dist1 is used for vertices which are in the next layer in the BFS.
+    // dist0 is used for vertices which are in the same layer in the 0-1 BFS.
+    // dist1 is used for vertices which are in the next layer in the 0-1 BFS.
     queue<Vertex> dist0;
     queue<Vertex> dist1;
 
@@ -107,19 +107,26 @@ string scs(vector<string> _strings){
         // Adding every char to the current vertex
         unordered_set<char> visited_chars;
         for (int i = 0; i < k; i++)
-        {   
+        {
             if (v[i] >= strings[i].size()) continue;
             char c = strings[i][v[i]];
-
+            // Progress only with distinct characters
+            // If the character is already visited, we don't need to progress with it
             if(visited_chars.find(c) == visited_chars.end())
             {
                 visited_chars.insert(c);
 
+                // Progressing to the next vertex in the graph
                 Vertex v1 = v;
                 v1.icrease_char_idx(c);
+
+                // If the vertex is already visited, we don't need to progress with it
                 if(visited.find(v1) == visited.end())
                 {
                     visited[v1] = v;
+                    // Checking the distance from the current vertex to the next vertex
+                    // If the distance is 1, we can add it to the dist1 queue
+                    // If the distance is 0, we can add it to the dist0 queue
                     if (v1.CLB - v.CLB == 1)
                     {
                         _dist1->push(v1);
@@ -130,6 +137,8 @@ string scs(vector<string> _strings){
                     }
                 
                 }
+                // If in this layer of the 0-1 BFS some vertex alredy added the v1 to dist1 we may need to add it to dist0 instead
+                // This can happen at most once per vertex, so it does not affect the overall time complexity.
                 else if (v1.CLB - v.CLB == 0 && visited[v1].CLB >= v.CLB)
                 {
                     _dist0->push(v1);
@@ -137,7 +146,8 @@ string scs(vector<string> _strings){
                 }
             }
         }
-    
+        
+        // Continue to next layer in the BFS if needed
         if (_dist0->empty())
         {
             swap(_dist0, _dist1);
