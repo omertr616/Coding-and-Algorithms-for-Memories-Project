@@ -74,7 +74,7 @@ int test(int _n, int _t, int _k) {
         cout << "SCS length: " << res.length() << endl;
         if (res.length() <= n)
         {
-            cout << "Test passed" << endl;
+            cout << "Test passed \n" << endl;
         }
         else{
             cout << "Test failed" << endl;
@@ -85,6 +85,7 @@ int test(int _n, int _t, int _k) {
             for(int j = 0; j < k; j++){
                 cout << strings[j] << endl;
             }
+            cout << " " << endl;
             return 0;
         }
     }

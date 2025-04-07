@@ -37,7 +37,7 @@ void run_test(string orig_str, vector<string> strings, int t, int exp_len){
 
     // check length
     if(res.length() != exp_len){
-        cout << "Test failed" << endl ;
+        cout << "Test failed \n" << endl ;
         return;
     }
 
@@ -48,7 +48,7 @@ void run_test(string orig_str, vector<string> strings, int t, int exp_len){
             return;
         }
     }
-    cout << "Test passed" << endl;
+    cout << "Test passed \n" << endl;
 }
 
 
@@ -61,7 +61,7 @@ int main() {
     vector<string> strings = {"QLL", "SLM", "QIS", "QLI"};  // k = 4
     int expected_scs_len = 6;  // "QLISLM"
     run_test(orig_str, strings, t, expected_scs_len);
-    
+
     // Test #2
     cout << "Test 2: " << endl;
     orig_str = "ABABB";
