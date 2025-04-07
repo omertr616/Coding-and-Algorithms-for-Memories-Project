@@ -62,7 +62,7 @@ int test_empirical(vector<int> n, vector<int> t, vector<int> k) {
             for(int l = 0; l < k.size(); l++){  // k values
                 cout << "n = " << n[i] << ", t = " << t[j] << ", k = " << k[l] << endl;  
                 // Take average:
-                int times = 10;
+                int times = 100;
                 chrono::duration<long long, std::nano> duration = chrono::duration<long long, std::nano>(0);
                 for (int idx = 0; idx < times; idx++)
                 {
