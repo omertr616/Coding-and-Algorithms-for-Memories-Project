@@ -62,8 +62,8 @@ int test(int _n, int _t, int _k) {
     int tests = 100;
     for(int i = 0; i < tests; i++){
         int n = rand() % _n + 2;
-        int t = rand() % (n/2) + 1;
-        int k = rand() % 10 + 1;
+        int t = rand() % _t + 1;
+        int k = rand() % _k + 1;
         cout << "Test " << i+1 << ": n = " << n << ", t = " << t << ", k = " << k << endl;  
         string original = generateRandomString(n);
         vector<string> strings(k);
